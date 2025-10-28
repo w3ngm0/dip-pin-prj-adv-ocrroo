@@ -17,7 +17,7 @@ import cv2
 from pathlib import Path
 import numpy as np
 from PIL import Image
-
+import pytesseract
 
 VID_PATH = Path("../resources/oop.mp4")
 OUT_PATH = Path("../resources/")

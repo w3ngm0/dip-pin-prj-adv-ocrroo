@@ -28,29 +28,39 @@ Complete the steps below and fill in the `> block` sections
 ### Installing and running OpenCV
 
 1. Examine the `pyproject.toml` what dependencies does it currently identify?
->
+> Currently there are no dependencies being identified 
 >
 2. Create a `.venv` in this folder using `uv venv`
 3. Activate the `venv` as instructed by `uv`
 4. In order to complete the project, we need to install OpenCV. Fill in the following:
   - What role does OpenCV have in this project?
-  >
+  > OpenCV is an open source computer vision and machine learning software library. In this project it 
+  > is used for image processing and other tasks. 
   - What is the `uv pip` command to install OpenCV?
-  > `uv pip install ????`
+  > `uv pip install opencv`
   - What is the URL of this library's git repo?
-  > [Insert URL Here](https://github.com/opencv/????-?????)
+  > [https://github.com/opencv/opencv-python](https://github.com/opencv/????-?????)
 5. Add OpenCV to your project using the `uv add` command:
-  > `uv add name-of-open-cv-library
+  > `uv add name-of-open-cv-library`
+  > `uv add open-cv python`
 
 6. Have the dependencies in the `pyproject.toml` changed? If so, how?
-  >
+  > Yes, it has changed the dependencies now show :
+  > `dependencies = [
+    "opencv-python>=4.12.0.88",
+    ]`   
   >
 7. Why did we use `uv add` over `uv pip`?
-  >
-  >
+  > `uv add` adds dependencies to our project while ensuring compatibility across different platforms. It is  
+  > `uv pip` similarly to the pip install, it allows us to install packages directly. 
 8. The `numpy` library is required for OpenCV. Should you add an explicit requirement for it? Why/Why not?
-  >
-  >
+  > The numpy library is required for OpenCV and is included when running the `uv pip install opencv-python` command.
+  > It is a python package that works with OpenCV for scientific computation. This library does need to be explicitly installed 
+  > using `uv add numpy`. 
+  > In the dependencies it is shown as: `dependencies = [
+    "numpy>=2.2.6",
+    "opencv-python>=4.12.0.88",
+    ]`
 9. Commit the changes so far to git. Use the message `chore: add OpenCV dependency`
 10. Go to `preliminary/library_basics.py` and complete the required functionality.
 11. Commit your changes with `feat: save video frames`
@@ -66,6 +76,7 @@ Tesseract consists of both an OCR Engine and a command line program. It is predo
 
 2. What is the URL that lists Python wrappers for Tesseract?
   > <url-here>
+
 
 3. Select a Python wrapper. What wrapper did you choose and why? Ensure you address each element below in your answer
 > name of the python library

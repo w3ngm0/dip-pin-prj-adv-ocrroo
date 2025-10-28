@@ -120,14 +120,13 @@ class CodingVideo:
         print(pytesseract.image_to_string(img_rgb))
 
 
-
-
 def test():
     """Try out your class here"""
     oop = CodingVideo(VID_PATH)
     print(oop)
     oop.save_as_image(42)
     oop.get_image_with_tesseract()
+
 
 if __name__ == '__main__':
     test()

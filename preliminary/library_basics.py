@@ -18,6 +18,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 import pytesseract
+pytesseract.pytesseract.tesseract_cmd=r'c:\Users\WANGMK.TDM\source\repos\Tesseract-OCR\tesseract.exe'
 
 VID_PATH = Path("../resources/oop.mp4")
 OUT_PATH = Path("../resources/")
@@ -58,7 +59,7 @@ class CodingVideo:
         """Given a time in seconds, returns the value of the nearest frame"""
         return int(seconds * self.fps)
 
-    def get_frame_rgb_array(self,capture: cv2.VideoCapture, frame_number: int) -> np.ndarray:
+    def get_frame_rgb_array(self, capture: cv2.VideoCapture, frame_number: int) -> np.ndarray:
         """Returns a numpy N-dimensional array (ndarray)
 
         The array represents the RGB values of each pixel in a given frame
@@ -75,7 +76,6 @@ class CodingVideo:
         if not ret:
             raise ValueError(f"Invalid read {frame_number}")
         return cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-
 
     def get_image_as_bytes(self, seconds: int) -> bytes:
         self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.get_frame_number_at_time(seconds))
@@ -110,13 +110,24 @@ class CodingVideo:
         image = Image.fromarray(frame)
         image.save(output_path)
 
+    def get_image_with_tesseract(self):
+        img_cv = cv2.imread(r'../resources/output.png')
+
+        if img_cv is None:
+            raise FileNotFoundError("Could not read image: output.png. Check file path")
+
+        img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
+        print(pytesseract.image_to_string(img_rgb))
+
+
+
 
 def test():
     """Try out your class here"""
     oop = CodingVideo(VID_PATH)
     print(oop)
     oop.save_as_image(42)
-
+    oop.get_image_with_tesseract()
 
 if __name__ == '__main__':
     test()

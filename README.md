@@ -3,8 +3,11 @@
 Include a brief overview of the project, include:
 
 - How do you deploy and run the project?
+> 
 - What are its core dependencies?
+> 
 - Who is it for and why?
+> This project is for learning purposes. 
 
 
 ## Additional Dependencies 
@@ -18,4 +21,5 @@ can be included.
 
 ### restructuredtext_lint
 > <https://pypi.org/project/restructuredtext-lint/>
-> linter 
+> This linter provides essential rules. 
+> 

@@ -8,21 +8,21 @@ This should include rough notes from the familiarization phase.
 
 Write a brief persona of your user using design thinking. You can use the following template:
 
-- **Name**: [Name of the user]
-- **Age**: [Age of the user]
-- **Occupation**: [Occupation of the user]
-- **Location**: [Location of the user]
-- **Goals**: [Goals of the user]
-- **Frustrations**: [Frustrations of the user]
-- **Motivations**: [Motivations of the user]
-- **Technology**: [Technology used by the user]
-- **Experience**: [Experience of the user]
-- **Personality**: [Personality of the user]
-- **Interests**: [Interests of the user]
+- **Name**: Emily
+- **Age**: 24
+- **Occupation**: Student
+- **Location**: Sydney
+- **Goals**: To learn coding in an easier way using screen capture
+- **Frustrations**: Hard to navigate where the buttons or shortcuts of capturing video are
+- **Motivations**: Become a good developer, family support.
+- **Technology**: Computers -> softwares, screen reader, braille display (sometimes), JAWS
+- **Experience**: Apply as they learn
+- **Personality**: Strong, smart 
+- **Interests**: Listening to music, and audio books 
 
 Notice: This project focuses on assistive technology for people with disabilities. It is important to treat the topic with respect and sensitivity.
 
-Consider:
+Consider: 
 
 - People are not defined by their disabilities.
 - People with disabilities are not a homogeneous group.

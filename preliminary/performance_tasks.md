@@ -111,9 +111,11 @@ FastAPI will allow us to enable communication with our OCR service from other pr
 5. Confirm that a list of videos and URLs is returned by copying the output below:
 > {"count":1,"videos":[{"id":"demo","path":"..\\resources\\oop.mp4","_links":{"self":"/video/demo","frame_example":"/video/demo/frame/1.0"}}]}(dip-pin-prj-adv-ocrroo-2025)
 6. What are the names of the two processes that just communicated?
-> 
+> The two processes that just communicated would be between the client and server.
+> FastAPI and curl communicate via HTTP requests, curl acts as the client sending requests, 
+> while FastAPI is the server that handles the requests.
 6. Modify the simple_api.py so that it works correctly with your implementation and complete any TODO markers
 7. Demonstrate the use of at least two other end points below:
->
->
->
+> ```markdown
+![img.png](img.png)
+```

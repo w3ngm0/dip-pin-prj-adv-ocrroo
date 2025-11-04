@@ -3,8 +3,11 @@
 Brief overview of the project, include:
 
 - How do you deploy and run the project?
+> 
 - What are its core dependencies?
+> 
 - Who is it for and why?
+> This project is for learning purposes. 
 
 ## Deploy and run the project
 * Open terminal or command prompt 
@@ -65,6 +68,7 @@ can be included.
 
 #### restructuredtext_lint
 > <https://pypi.org/project/restructuredtext-lint/>
+
 > linter 
 
 ## Who is it for and why?

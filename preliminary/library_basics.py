@@ -87,14 +87,11 @@ class CodingVideo:
             raise ValueError("Failed to encode frame")
         return buf.tobytes()
 
-
-
-
     def save_as_image(self, seconds: int, output_path: Path | str = 'output.png') -> None:
         """Saves the given frame as a png image
 
-        # TODO: Requires a third-party library to convert ndarray to png
-        # TODO: Identify the library and add a reference to its documentation
+        # Third party library - PIL, pillow for images
+        # Reference for PIL: https://pypi.org/project/pillow/
 
 
         """

@@ -11,7 +11,8 @@ A family member introduced her to programming and it transformed into personal i
 with assistive tools i.e. screen reading software and braille display devices. 
 
 Goals: 
-
+Want to develop a project that helps learning tutorial videos easier. Especially be able
+to capture and read the transcript.
 
 
 Needs: 
@@ -55,7 +56,7 @@ So that I can have a sample of the code in text format to work on.
 
 #### Lecturer's checklist (to be used by the lecturer)
 
-- [x] Persona is well defined
+- [x] Persona is well-defined
 - [x] Persona is relevant to the application
 - [x] Design artifacts are present and easy to follow
 - [x] Design decisions are based on user needs and goals

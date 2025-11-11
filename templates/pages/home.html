@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block page_title %}
+
+    OCORRO WEBSITE
+{% endblock %}
+
+
+<!-- Main body -->
+{% block main %}
+
+<section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+
+
+    <p class="fa-bold">Select a video below:</p>
+
+<!--    <ul class="list-disc list-inside">-->
+<!--        <li> Link </li>-->
+<!--    </ul>-->
+
+    <!-- File input -->
+    <input type="file" id="videoFile" accept="video/*"
+           class="px-4 py-2 bg-pink-100 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200">
+    <!-- Video Player -->
+    <video id="videoPlayer" width="640" height="360" controls>
+        <source id="videoSource" src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <br><br>
+
+    <div class="mt-4 flex space-x-2 justify-items-center">
+      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="playPause()">Play/Pause</button>
+
+      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeSmall()">Small</button>
+
+      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeNormal()">Normal</button>
+
+      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeBig()">Big</button>
+    </div>
+
+    <div class="mt-4 flex space-x-2 justify-items-center">
+
+        <p class="text-bold" id="timestamp">TimeStamp: 0.00.00 </p>
+    </div>
+</section>
+
+
+<section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+    <img id="frameImage" width="640" height="360"/>
+    <div class="mt-4 flex space-x-2 justify-items-center">
+        <p>Frame capture</p>
+
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="frameCapture()">Capture Frame</button>
+        <p>Read Transcript</p>
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="readTranscript()">Read</button>
+
+        <p>Reset Transcript</p>
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="resetTranscript()">Reset </button>
+    </div>
+
+</section>
+{% endblock %}
+
+<!-- Footer of Page -->
+{% block base_footer %}give
+<p class="text-gray-500 text-left px-2 font-medium uppercase title-font mb-4 border-b border-gray-500 w-full">
+    Home Page
+</p>
+{% endblock %}

@@ -1,4 +1,4 @@
-
+let uploadedVid = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById("videoFile");
@@ -6,29 +6,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoSource = document.getElementById("videoSource")
     const timeStamp = document.getElementById("timestamp")
 
-    fileInput.addEventListener('change', e => {
-        const file = fileInput.files[0];
-        if (!file) {
-            alert("No file selected.");
-            return;
-        }
 
-        if (!file.type.startsWith('video/')) {
-            alert("Please select a valid video file.");
-            return;
-        }
+    fileInput.addEventListener('change', async e => {
+    const file = fileInput.files[0];
+    if (!file) return;
 
-        if (file){
-            // Create a temporary URL for the file
-            const url = URL.createObjectURL(file);
-            console.log(url);
-            // Set source and reload the video
-            videoSource.src = url;
-            videoPlayer.load();
-        }
+    // Upload to FastAPI
+    const formData = new FormData();
+    formData.append("file", file);
 
+    const res = await fetch("/upload_video", { method: "POST", body: formData });
+    const data = await res.json();
 
-    })
+    if (!res.ok) {
+        alert("Failed to upload video");
+        return;
+    }
+
+    // Save filename returned by backend
+    uploadedVid = data.filename;
+
+    // Load video in browser
+    const url = URL.createObjectURL(file);
+    videoSource.src = url;
+    videoPlayer.load();
+});
+
     videoPlayer.addEventListener('timeupdate', () =>{
         const current = videoPlayer.currentTime;
 
@@ -37,9 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const seconds = Math.floor(current % 60).toString().padStart(2, '0');
         const milliseconds = Math.floor((current % 1) * 1000).toString().padStart(3, '0');
 
-    timeStamp.textContent = `TimeStamp: ${minutes}:${seconds}.${milliseconds}`;
+        timeStamp.textContent = `TimeStamp: ${minutes}:${seconds}.${milliseconds}`;
 
     });
+
+    // Capture frame button
+    const CaptureBtn = document.getElementById("captureFrame");
+
+    CaptureBtn.addEventListener('click', () => {
+        if (!uploadedVid) {
+            alert("Please upload a video first!");
+            return;
+        }
+        const time = videoPlayer.currentTime;
+        frameCapture(uploadedVid, time);
+
+    })
 
 })
 // === Control functions ===
@@ -52,43 +68,59 @@ function playPause() {
         myVideo.pause();
 }
 
-function makeBig() {
-    myVideo.width = 720;
+// Capture frame button
+function captureFrameButton() {
+    if (!uploadedVid) {
+        alert("Upload a video first!");
+        return;
+    }
+    const time = videoPlayer.currentTime;
+    frameCapture(uploadedVid, time);
 }
 
-function makeSmall() {
-    myVideo.width = 320;
-}
-
-function makeNormal() {
-    myVideo.width = 480;
-}
-
-
+// capture frame function
 function frameCapture(vid, time) {
    const img = document.getElementById("frameImage");
+   const safeVid = encodeURIComponent(vid);
 
     // Call the FastAPI endpoint
-    fetch(`/video/${vid}/frame/${time}`)
+    fetch(`/video/${safeVid}/frame/${time}`)
         .then(response => {
-            if (!response.ok) throw new Error("Failed to fetch frame");
+            if (!response.ok) throw new Error(`Frame error: ${response.status}`);
             return response.blob();
         })
-        .then(blob => {
-            // Convert blob to object URL
-            img.src = URL.createObjectURL(blob);
-        })
+        .then(blob => img.src = URL.createObjectURL(blob))
         .catch(err => console.error(err));
 }
+async function readTranscript() {
+    if (!uploadedVid){
+        alert("Upload a video first.");
 
-// Example usage:
-frameCapture("oop(1).mp4", 5.0);// frame at 5 seconds
+    }
+    const videoPlayer = document.getElementById("videoPlayer");
+    const time = videoPlayer.currentTime;
+    const safeVid = encodeURIComponent(uploadedVid);
 
+    frameCapture(uploadedVid, time);
 
-function readTranscript() {
-    pass
+    try{
+        const res = await fetch(`/video/${safeVid}/frame/${time}/transcript`);
+        if (!res.ok) {
+            throw new Error(`Transcript error: ${res.status}`)
+        }
+
+        const data = await res.json();
+        const text = data.text || "No text detected";
+
+        document.getElementById("transcriptText").textContent = text;
+    } catch (err){
+        console.error(err);
+        document.getElementById("transcriptText").textContent = "Failed to read transcript.";
+    }
+
 }
 
 function resetTranscript(){
-    pass
+    const element = document.getElementById("transcriptText");
+    if (element) element.textContent = "";
 }

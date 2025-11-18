@@ -3,8 +3,7 @@
 {% block title %} Home {% endblock title %}
 
 {% block page_title %}
-
-    OCORRO WEBSITE
+    OCRROO WEBSITE
 {% endblock %}
 
 
@@ -22,7 +21,7 @@
 
     <!-- File input -->
     <input type="file" id="videoFile" accept="video/*"
-           class="px-4 py-2 bg-pink-100 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200">
+           class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200">
     <!-- Video Player -->
     <video id="videoPlayer" width="640" height="360" controls>
         <source id="videoSource" src="" type="video/mp4">
@@ -33,12 +32,6 @@
 
     <div class="mt-4 flex space-x-2 justify-items-center">
       <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="playPause()">Play/Pause</button>
-
-      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeSmall()">Small</button>
-
-      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeNormal()">Normal</button>
-
-      <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="makeBig()">Big</button>
     </div>
 
     <div class="mt-4 flex space-x-2 justify-items-center">
@@ -49,18 +42,33 @@
 
 
 <section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+    <h2>Frame capture</h2>
     <img id="frameImage" width="640" height="360"/>
     <div class="mt-4 flex space-x-2 justify-items-center">
-        <p>Frame capture</p>
 
-        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="frameCapture()">Capture Frame</button>
-        <p>Read Transcript</p>
-        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="readTranscript()">Read</button>
 
-        <p>Reset Transcript</p>
-        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="resetTranscript()">Reset </button>
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="captureFrameButton()">Capture Frame</button>
     </div>
 
+</section>
+
+<section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+    <h3>Here is your Transcript: </h3>
+    <div class="mt-4 flex space-x-2 justify-items-center">
+        <div id="transcriptBox"
+             class="mt-4 p-4 w-full bg-white shadow rounded hover:text-gray-500" style="white-space: pre-wrap; min-height: 100px; min-width: 200px;">
+            <p id="transcriptText">Transcript will appear here:</p>
+
+        </div>
+        <!-- Read Transcript -->
+        <div class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+             <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="readTranscript()">Read</button>
+
+        <!-- Reset Transcript -->
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" onclick="resetTranscript()">Reset </button>
+        </div>
+
+    </div>
 </section>
 {% endblock %}
 

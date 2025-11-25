@@ -48,22 +48,22 @@ So that I can have a sample of the code in text format to work on.
 
 ##### What could be improved
 
-- [ ] [Removing capture frame button/element - directly transcribe]
-- [ ] [Remove Play/Pause button - can do both with Spacebar]
-- [ ] [A way to select transcript or OCR text and/or have a saved version of transcript]
+- [X] [Removing capture frame button/element - directly transcribe]
+- [X] [Remove Play/Pause button - can do both with Spacebar]
+- [X] [A way to select transcript or OCR text and/or have a saved version of transcript]
 
 ##### What will you change before the next meeting
 
-- [ ] [list of things that will be changed before the next meeting] (no commitment to complete this)
-- [ ] [Try to implement a Save transcript button/feature]
-- [ ] [Remove capture frame button and will do both with just `read button`]
-- [ ] [Remove Play/Pause button]
-- [ ] [Add user name to validate user or something similar]
+- [X] [list of things that will be changed before the next meeting] (no commitment to complete this)
+- [X] [Try to implement a Save transcript button/feature]
+- [X] [Remove capture frame button and will do both with just `read button`]
+- [X] [Remove Play/Pause button]
+- [X] [Add user name to validate user or something similar]
 
 ##### Were there any questions that needed to be discussed with the user
 
-- [ ] [list of questions that need to be discussed with the user]
-- [ ] [Prefer browser extensions or text readers to work - try it out]
+- [X] [list of questions that need to be discussed with the user]
+- [X] [Prefer browser extensions or text readers to work - try it out]
 
 #### Lecturer's checklist (to be used by the lecturer)
 

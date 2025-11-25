@@ -1,4 +1,6 @@
-## Personas 
+## Personas
+
+### Persona #1 
 
 ```markdown
 
@@ -29,37 +31,44 @@ So that I can have a sample of the code in text format to work on.
 > Issue at hand: Hard to figure out how to activate the screen capture so maybe develop a keyboard shortcut. 
 ```
 
-##### Meeting minutes
+### Persona #2
 
-- [x] Meeting held on [04/11/2025]
-- [x] Persona discussed: [Emily]
-- [x] Design artefacts reviewed: [Wireframes]
-- [x] Issues discussed: [keyboard navigation, confusing layout change]
-- [x] Feedback provided: [list of videos in server, keep implementation simple]
+```markdown
+Name: Lucy
 
-##### What worked well
+Background:
+A motivated learner who enjoys problem-solving and has passion for technology. She 
+became visually impaired losing all vision by age of 13. She has learned how to code with 
+the help of assistive technologies such as screen readers, braille displays etc. 
 
-- [x] [list of things that worked well]
-- [x] [simple wireframe layout, minimal design]
+Goals:
+Her goal is to become a proficient programmer and software developer, creating accessible 
+technology solutions. Aiming to master coding languages and help other visually impaired 
+students. 
 
-##### What could be improved
+Needs: 
+As Lucy I want to be able to capture the frame of a video and read the transcript of the tutorial of any video from my library.
+So that I can save the code or paste it somewhere for learning. 
 
-- [x] [list of videos in server, keep implementation simple]
+```
 
-##### What will you change before the next meeting
+### Persona #3 
 
-- [x] [list of things that will be changed before the next meeting] (no commitment to complete this)
+```markdown
+Name: Mateo 
 
-##### Were there any questions that needed to be discussed with the user
+Background:
+He has always been fascinated by technology and how it can solve real-world problems. Despite
+being visually impaired he has embraced learning aids to explore programming. 
 
-- [x] [list of questions that need to be discussed with the user]
+Goals:
+Is to become a skilled software developer who aims to deepen his knowledge of coding languages. 
 
-#### Lecturer's checklist (to be used by the lecturer)
 
-- [x] Persona is well-defined
-- [x] Persona is relevant to the application
-- [x] Design artifacts are present and easy to follow
-- [x] Design decisions are based on user needs and goals
-- [x] Appropriate considerations of interaction patterns appropriate for the user
-- [n/a] Efforts towards realizing at least one significant issue involving user interaction
-- [x] Whole team engagement in the design process
+Needs: 
+As Mateo 
+I want to be able to upload YouTube tutorial videos to be saved in a file as a transcript.
+So that I can use it to practice code with the help of a screen reader. 
+
+
+```

@@ -12,6 +12,23 @@
 
 <section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
 
+    <div class="mt-4 flex space-x-2 w-full justify-items-center" >
+        <p class="mt-4 flex space-x-2 w-full justify-items-center">Please enter a name:</p>
+        <label class="mt-1 flex space-x-2 justify-items-center border " style="white-space: pre-wrap; min-height: 50px;">
+            <input type="text" name="userName" id="userName" >
+        </label>
+        <button class="px-4 py-2 bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" style="min-width: 150px;" onclick="myFunction()">Enter</button>
+
+
+    </div>
+    <div>
+        <p id="greeting"> </p>
+    </div>
+</section>
+
+
+<section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
+
 
     <p class="fa-bold">Select a video below:</p>
 
@@ -29,10 +46,10 @@
     </video>
 
     <br><br>
-
-    <div class="mt-4 flex space-x-2 justify-items-center">
+    <!-- Play and Pause button -->
+    <!--<div class="mt-4 flex space-x-2 justify-items-center">
       <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="playPause()">Play/Pause</button>
-    </div>
+    </div> -->
 
     <div class="mt-4 flex space-x-2 justify-items-center">
 
@@ -44,28 +61,33 @@
 <section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
     <h2>Frame capture</h2>
     <img id="frameImage" width="640" height="360"/>
+
     <div class="mt-4 flex space-x-2 justify-items-center">
-
-
-        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="captureFrameButton()">Capture Frame</button>
+        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="captureFrameAndTranscriptButton()">Capture and Read Frame</button>
     </div>
 
 </section>
 
 <section class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
     <h3>Here is your Transcript: </h3>
-    <div class="mt-4 flex space-x-2 justify-items-center">
         <div id="transcriptBox"
-             class="mt-4 p-4 w-full bg-white shadow rounded hover:text-gray-500" style="white-space: pre-wrap; min-height: 100px; min-width: 200px;">
-            <p id="transcriptText">Transcript will appear here:</p>
+             class="mt-.5 p-1 w-full bg-white shadow rounded hover:text-gray-500">
+            <label>
+                <textarea class="mt-1 flex space-x-2 justify-items-center border " style="white-space: pre-wrap; min-height: 500px; min-width: 650px;" id="transcriptText" readonly>
+                Transcript will appear here:
+
+                </textarea>
+            </label>
+
 
         </div>
         <!-- Read Transcript -->
-        <div class="grid grid-cols-6  justify-items-center gap-4 mx-auto border grow h-full shadow-md p-4 rounded space-y-2 bg-zinc-100">
-             <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="readTranscript()">Read</button>
+        <div class="mt-4 flex space-x-2 justify-items-center gap-4 mx-auto grow p-4 rounded space-y-2 bg-zinc-100">
+            <!--<button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded shadow transition duration-200" onclick="readTranscript()">Read</button> -->
 
         <!-- Reset Transcript -->
-        <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" onclick="resetTranscript()">Reset </button>
+        <!--<button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" onclick="resetTranscript()">Reset </button>-->
+            <button class="px-4 py-2 w-full bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" onclick="copyText()">Copy Text </button>
         </div>
 
     </div>

@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 // === Control functions ===
+// --- Pause/Play video -- currently not in use
 const myVideo = document.getElementById("videoPlayer");
 
 function playPause() {
@@ -68,41 +69,122 @@ function playPause() {
         myVideo.pause();
 }
 
-// Capture frame button
-function captureFrameButton() {
-    if (!uploadedVid) {
-        alert("Upload a video first!");
-        return;
-    }
-    const time = videoPlayer.currentTime;
-    frameCapture(uploadedVid, time);
+function myFunction() {
+    const name = document.getElementById("userName").value;
+    document.getElementById("greeting").textContent = "Hello, " + name + "!\n" + "Welcome to Ocrroo website!";
+
+    // Validate username
+    const pattern = /^[a-zA-Z][a-zA-Z0-9_]{2,15}$/;
+
+    const isValid = pattern.test(name);
+    console.log("Username entered: ", name);
+    console.log("Username entered: ", isValid);
+
+    // Test
+    return isValid
+
+    // function validateUsername(name){
+    //     if (name.length <3) {
+    //         return "Username is too short. Please enter a longer name!";
+    //     }
+    //     if (name.length > 16) {
+    //         return "Username is too long. Please enter a shorter name!"
+    //     }
+    //
+    //     // Regex to check valid characters
+    //     const pattern = /^[a-zA-Z0-9._]+$/;
+    //     if (!pattern.test(name)) {
+    //         return "Username contains invalid characters. Only letters, numbers, " +
+    //             "dots and underscores are allowed.";
+    //     }
+    //
+    //     return "Valid Username.";
+    // }
+    //
+    //  console.log(validateUsername());
+
 }
 
-// capture frame function
-function frameCapture(vid, time) {
-   const img = document.getElementById("frameImage");
-   const safeVid = encodeURIComponent(vid);
 
-    // Call the FastAPI endpoint
-    fetch(`/video/${safeVid}/frame/${time}`)
-        .then(response => {
-            if (!response.ok) throw new Error(`Frame error: ${response.status}`);
-            return response.blob();
-        })
-        .then(blob => img.src = URL.createObjectURL(blob))
-        .catch(err => console.error(err));
-}
-async function readTranscript() {
-    if (!uploadedVid){
-        alert("Upload a video first.");
+// // Capture frame button
+// function captureFrameButton() {
+//     if (!uploadedVid) {
+//         alert("Upload a video first!");
+//         return;
+//     }
+//     const time = videoPlayer.currentTime;
+//     frameCapture(uploadedVid, time);
+// }
+//
+// // capture frame function
+// function frameCapture(vid, time) {
+//    const img = document.getElementById("frameImage");
+//    const safeVid = encodeURIComponent(vid);
+//
+//     // Call the FastAPI endpoint
+//     fetch(`/video/${safeVid}/frame/${time}`)
+//         .then(response => {
+//             if (!response.ok) throw new Error(`Frame error: ${response.status}`);
+//             return response.blob();
+//         })
+//         .then(blob => img.src = URL.createObjectURL(blob))
+//         .catch(err => console.error(err));
+// }
+// async function readTranscript() {
+//     if (!uploadedVid){
+//         alert("Upload a video first.");
+//
+//     }
+//     const videoPlayer = document.getElementById("videoPlayer");
+//     const time = videoPlayer.currentTime;
+//     const safeVid = encodeURIComponent(uploadedVid);
+//
+//     frameCapture(uploadedVid, time);
+//
+//     try{
+//         const res = await fetch(`/video/${safeVid}/frame/${time}/transcript`);
+//         if (!res.ok) {
+//             throw new Error(`Transcript error: ${res.status}`)
+//         }
+//
+//         const data = await res.json();
+//         const text = data.text || "No text detected";
+//
+//         document.getElementById("transcriptText").textContent = text;
+//     } catch (err){
+//         console.error(err);
+//         document.getElementById("transcriptText").textContent = "Failed to read transcript.";
+//     }
+//
+// }
 
-    }
+// Capture and Read Transcript button combined
+async function captureFrameAndTranscriptButton(){
+   if (!uploadedVid) {
+       alert("Upload a video first!");
+       return;
+   }
     const videoPlayer = document.getElementById("videoPlayer");
     const time = videoPlayer.currentTime;
     const safeVid = encodeURIComponent(uploadedVid);
+    const img = document.getElementById("frameImage");
 
-    frameCapture(uploadedVid, time);
+    // -- Capture Frame --
+    try {
 
+        const frameRes = await fetch(`/video/${safeVid}/frame/${time}`);
+        if (!frameRes.ok) throw new Error(`Frame error: ${frameRes.status}`);
+
+        const blob = await frameRes.blob();
+        img.src = URL.createObjectURL(blob);
+
+    } catch (err) {
+            console.error(err)
+
+    }
+
+
+    // -- Read Transcript --
     try{
         const res = await fetch(`/video/${safeVid}/frame/${time}/transcript`);
         if (!res.ok) {
@@ -114,13 +196,28 @@ async function readTranscript() {
 
         document.getElementById("transcriptText").textContent = text;
     } catch (err){
-        console.error(err);
-        document.getElementById("transcriptText").textContent = "Failed to read transcript.";
+        console.error(err)
+         document.getElementById("transcriptText").textContent = "Failed to read transcript.";
     }
-
 }
 
-function resetTranscript(){
+
+// Reset function not in use - uncomment to use
+/* function resetTranscript(){
     const element = document.getElementById("transcriptText");
     if (element) element.textContent = "";
+} */
+
+// Copy transcript to paste
+function copyText() {
+    const text = document.getElementById('transcriptText').value;
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            alert("Copied text:\n\n" + text);
+        })
+        .catch(err => {
+            console.error("Error copying text: ", err);
+        });
+
+    alert("Here is the copied text: " + text);
 }

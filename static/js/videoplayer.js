@@ -76,7 +76,7 @@ function playPause() {
 
 // Reference: https://www.geeksforgeeks.org/javascript/username-validation-in-js-regex/
 // Used for understanding username validation using Regex
-// Validate Username
+// Validate Username - reject if invalid, greet if valid
 function validateUser() {
     const name = document.getElementById("userName").value.trim();
     const greeting = document.getElementById("greeting");

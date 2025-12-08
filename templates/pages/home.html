@@ -17,12 +17,14 @@
         <label class="mt-1 flex space-x-2 justify-items-center border " style="white-space: pre-wrap; min-height: 50px;">
             <input type="text" name="userName" id="userName" >
         </label>
-        <button class="px-4 py-2 bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" style="min-width: 150px;" onclick="myFunction()">Enter</button>
+        <!-- Validate username button-->
+        <button class="px-4 py-2 bg-gray-500 hover:bg-gray-100 hover:text-zinc-600 rounded border shadow transition duration-200" style="min-width: 150px;" onclick="validateUser()">Enter</button>
 
 
     </div>
     <div>
         <p id="greeting"> </p>
+        <p id="userError" style="color:red; font-weight:bold;"></p>
     </div>
 </section>
 

@@ -76,43 +76,30 @@ function playPause() {
 
 // Reference: https://www.geeksforgeeks.org/javascript/username-validation-in-js-regex/
 // Used for understanding username validation using Regex
-function myFunction() {
-    const name = document.getElementById("userName").value;
-    document.getElementById("greeting").textContent =
-        "Hello, " + name + "!\n" + "Welcome to Ocrroo website!";
+// Validate Username
+function validateUser() {
+    const name = document.getElementById("userName").value.trim();
+    const greeting = document.getElementById("greeting");
+    const errorMessage = document.getElementById("userError");
 
-    // Validate username regex:
+    // Regex: start with a letter, 3-16 character, only letters, numbers and underscore.
     const pattern = /^[a-zA-Z][a-zA-Z0-9_]{2,15}$/;
 
-    const isValid = pattern.test(name);
-    console.log("Username entered: ", name);
-    console.log("Username entered: ", isValid);
+    if (!pattern.test(name)){
+        errorMessage.textContent = "Invalid Username. Name must start with a letter, 3-16 characters long," +
+            " containing only letters, numbers or underscores. ";
 
-    // Test
-    return isValid
+        greeting.textContent = "";
+        return false; // reject if invalid
 
-    // function validateUsername(name){
-    //     if (name.length <3) {
-    //         return "Username is too short. Please enter a longer name!";
-    //     }
-    //     if (name.length > 16) {
-    //         return "Username is too long. Please enter a shorter name!"
-    //     }
-    //
-    //     // Regex to check valid characters
-    //     const pattern = /^[a-zA-Z0-9._]+$/;
-    //     if (!pattern.test(name)) {
-    //         return "Username contains invalid characters. Only letters, numbers, " +
-    //             "dots and underscores are allowed.";
-    //     }
-    //
-    //     return "Valid Username.";
-    // }
-    //
-    //  console.log(validateUsername());
+    }
+    // If valid
+    errorMessage.textContent = "";
+    greeting.textContent = `Hello, ${name}! Welcome to Ocrroo website!`;
+
+    return true; // show greeting
 
 }
-
 
 
 
